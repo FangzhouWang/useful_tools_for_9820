@@ -1,0 +1,12 @@
+1.保证电脑上安装有python和powershell，运行powershell请使用管理员权限。
+2.去moodle按F12去network request response里找每一组学生信息的json文本（注意！！！如果拷贝最后一行换行了，要把空白行删掉！不然json读取有问题），放到对应channel名字的txt文件里“加channel”和“加大组”里面各放一份。
+3.运行get_email_for_group.py和get_emails_for_channel.py，检查生成的csv文件是否正确。
+4.先批量把学生加到teams大组：去teams里找到group ID，然后吧“add_team_user.ps1”文件打开，将
+	$groupId = "31f1ff6c-d48c-4f8a-b2e1-abca7fd399df"
+  替换为你的group ID，再修改好几个管理员的邮箱，然后运行脚本。脚本运行中如有安装过程，全部点Y，之后输入账户密码。
+  别忘了在“add_team_user.ps1”里把几个管理员加上（改下zID就行）。
+5.再批量把学生加到各个channel,注意运行脚本前需要将channel先创建好，名字需要与txt文件一致：运行“add_team_channel_users.ps1”即可，同样需要修改group ID和管理员的邮箱。
+
+* group ID在teams里找到“Get link to team”的url，里面有ID
+* 每次使用前记得删除“./加Channel”和“./加大组”里的txt文件以及".加Channel/output_csvs"里的文件。
+* 一定记得改group ID！不然乱套！
